@@ -1,0 +1,92 @@
+###
+POST {{host}}/api/v1/notaries
+Content-Type: application/json
+
+{
+  "page": 2,
+  "page_size": 10
+}
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+POST {{host}}/api/v1/allocated
+Content-Type: application/json
+
+{
+  "page": 1,
+  "page_size": 10,
+  "address": "",
+  "client_name": "FileDrive",
+  "client_address": ""
+}
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+
+###
+POST {{host}}/api/v1/deals
+Content-Type: application/json
+
+{
+  "page": 1,
+  "page_size": 10,
+  "client_address": "f3wgfwtrs5p6jrkwfl2mksqa2ivgbgdjjrhjbefy3n7qzvotc3y6sazmp5gfyj7um6jlgdvlbiepzawnc6wxtq",
+  "start_epoch": 513692,
+  "allowance": "5497558138880"
+}
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+
+###
+POST {{host}}/api/v1/granted-daily
+Content-Type: application/json
+
+{
+  "limit": 7
+}
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+
+###
+POST {{host}}/api/v1/proportion-of-allowance
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+
+###
+POST {{host}}/api/v1/proportion-of-allowance-by-location
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}

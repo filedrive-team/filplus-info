@@ -1,0 +1,44 @@
+[app]
+runmode = "product"
+
+#the listen port is 'httpPort'
+[development]
+[development.server]
+httpPort = 8088
+readTimeout = 60
+writeTimeout = 60
+
+[development.database]
+type = "postgres"
+user = "example_user"
+password = "example_password"
+host = "example_host"
+name = "example_name"
+
+#the listen port is 'httpPort'
+[test]
+[test.server]
+httpPort = 8088
+readTimeout = 60
+writeTimeout = 60
+
+[test.database]
+type = "mysql"
+user = "mysql_user"
+password = "mysql_password"
+host = "mysql_host"
+name = "mysql_name"
+
+#the listen port is 'httpPort'
+[product]
+[product.server]
+httpPort = 8088
+readTimeout = 60
+writeTimeout = 60
+
+[product.database]
+type = "mysql"
+user = "mysql_name"
+password = "mysql_password"
+host = "your_host"
+name = "your_dbname"

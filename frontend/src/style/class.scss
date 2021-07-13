@@ -1,0 +1,45 @@
+@import './variable.scss';
+@each $g in $gap{
+  @each $d in $direction{
+    .#{$d}-#{$g}{
+      margin-#{$d}: #{$g}px;
+    }
+  }
+}
+@each $var in $font {
+  .font-#{$var}{
+    font-size: #{$var}px;
+  }
+}
+@each $var in $weight {
+  .font-#{$var}{
+    font-weight: #{$var};
+  }
+}
+.flex{
+  display: flex;
+  &.column{
+    flex-direction: column;
+  }
+  &.j-c{
+    justify-content: center;
+  }
+  &.j-b{
+    justify-content: space-between;
+  }
+  &.j-a{
+    justify-content: space-around;
+  }
+  &.j-e{
+    justify-content: space-evenly;
+  }
+  &.j-s{
+    justify-content: flex-start;
+  }
+  &.a-c{
+    align-items: center;
+  }
+}
+.pointer{
+  cursor: pointer;
+}
