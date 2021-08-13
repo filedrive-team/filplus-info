@@ -7,6 +7,7 @@ import (
 	"github.com/filedrive-team/filplus-info/errormsg"
 	"github.com/filedrive-team/filplus-info/models"
 	"github.com/gin-gonic/gin"
+	"strings"
 	"time"
 )
 
@@ -18,7 +19,8 @@ func DataCapAllocatedList(c *gin.Context) {
 	params := new(api.DataCapAllocatedParam)
 	c.BindJSON(params)
 
-	res, err := models.ClientList(params.ClientName, params.ClientAddress, params.Address, &params.PaginationParams)
+	addresses := strings.Split(params.Address, ",")
+	res, err := models.ClientList(params.ClientName, params.ClientAddress, addresses, &params.PaginationParams)
 	if err != nil {
 		api.JSONError(c, errormsg.ByCtx(c, errormsg.SearchFailed), err.Error())
 	} else {

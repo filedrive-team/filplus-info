@@ -50,7 +50,7 @@ func GetClientList(name, address string, offset, size int) (total int, list []*C
 	return
 }
 
-func ClientList(clientName, client, notary string, params *types.PaginationParams) (*types.CommonList, error) {
+func ClientList(clientName string, client string, notary []string, params *types.PaginationParams) (*types.CommonList, error) {
 	type ClientItem struct {
 		Address    string          `json:"address"`
 		Client     string          `json:"client"`
@@ -88,9 +88,9 @@ on ca.notary = n.address
 where c.deleted_at is null
 `
 	var stmtParams []interface{}
-	if notary != "" {
-		stmtCount += " and ca.notary=?"
-		stmt += " and ca.notary=?"
+	if len(notary) > 0 {
+		stmtCount += " and ca.notary in ?"
+		stmt += " and ca.notary in ?"
 		stmtParams = append(stmtParams, notary)
 	}
 	if clientName != "" {
